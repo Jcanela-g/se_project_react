@@ -5,7 +5,7 @@ export function ModalWithForm({
   buttonText,
   title,
   activeModal,
-  handleCloseClick,
+  onClose,
 }) {
   return (
     <div className={`modal ${activeModal === "add-garment" && "modal_open"}`}>
@@ -13,7 +13,7 @@ export function ModalWithForm({
         <h2 className="modal__title">{title}</h2>
         <button
           type="button"
-          onClick={handleCloseClick}
+          onClick={onClose}
           className="modal__close"
         ></button>
         <form action="" className="modal__form">
