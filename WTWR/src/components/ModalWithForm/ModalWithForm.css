@@ -1,0 +1,122 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../assets/CabinetGrotesk-Regular.otf");
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* visibility: hidden; */
+}
+
+.modal_open {
+  visibility: visible;
+}
+
+.modal__content {
+  background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  padding: 28px 28px 36px;
+  max-width: 496px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  background: url("../../assets/close.svg") center no-repeat;
+  border: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.modal__title {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 24px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal__label {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 1);
+  margin: 0 0 24px;
+}
+
+.modal__label_type_normal {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.modal__input {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  border: none;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  width: 100%;
+  padding: 0;
+}
+
+.modal__legend {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+
+.modal__radio-buttons {
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  gap: 8px;
+}
+
+.modal__label_type_radio {
+  margin: 0;
+  display: flex;
+  gap: 5px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__submit {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 8px 16px;
+  max-width: 124px;
+  margin-top: 32px;
+  border: none;
+  border-radius: 4px;
+}
