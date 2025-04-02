@@ -1,6 +1,4 @@
 import "./ItemCard.css";
-// import tShirt from "../../assets/T-Shirt.png";
-// import { defaultClothingItems } from "../../utils/constants";
 
 export function ItemCard({ item, onCardClick }) {
   const handleCardClick = () => {
