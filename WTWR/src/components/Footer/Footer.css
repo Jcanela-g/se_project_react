@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../assets/CabinetGrotesk-Regular.otf");
+}
+
+.footer {
+  font-family: "Cabinet Grotesk";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+
+.footer__name {
+  padding: 0;
+  margin: 0;
+}
+
+.footer__date {
+  padding: 0;
+  margin: 0;
+}
