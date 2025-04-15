@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../assets/CabinetGrotesk-Regular.otf");
+}
+
+.toggle-switch {
+  width: 56px;
+  height: 28px;
+  border: 2px solid rgba(126, 126, 126, 1);
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  margin-left: auto;
+}
+
+.toggle-switch:hover {
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.toggle-switch__checkbox {
+  opacity: 0;
+}
+
+.toggle-switch__circle {
+  background-color: black;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  transition: all 0.5s;
+}
+
+.toggle-switch__text {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.5);
+  top: 6px;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.toggle-switch__text_f {
+  left: 9px;
+}
+
+.toggle-switch__text_c {
+  right: 9px;
+}
+
+.toggle-switch:hover .toggle-switch__circle {
+  transform: translateX(2px);
+}
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__circle {
+  transform: translateX(28px);
+}
+
+.toggle-switch:hover .toggle-switch__checkbox:checked ~ .toggle-switch__circle {
+  transform: translateX(26px);
+}
+
+.toggle-switch__text_color_white {
+  color: rgba(255, 255, 255, 1);
+  transition: all 0.5s;
+}
