@@ -49,3 +49,8 @@
   color: rgba(0, 0, 0, 1);
   margin: 0;
 }
+
+.header__link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+}

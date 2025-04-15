@@ -80,7 +80,15 @@ function App() {
                 />
               }
             ></Route>
-            <Route path="/profile" element={<Profile />}></Route>
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            ></Route>
           </Routes>
 
           <Footer />
