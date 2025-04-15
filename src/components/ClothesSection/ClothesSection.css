@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../assets/CabinetGrotesk-Regular.otf");
+}
+
+.clothes-section {
+  margin: 35px 0 80px;
+}
+
+.clothes-section__info-section {
+  display: flex;
+  gap: 20px;
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  margin-bottom: 16px;
+}
+
+.clothes-section__title {
+  color: rgba(0, 0, 0, 1);
+  margin: 0;
+}
+
+.clothes-section__add-item-btn {
+  color: rgba(0, 0, 0, 0.6);
+  border: none;
+  padding: 0;
+}
+
+.clothes-section__cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 325px);
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
