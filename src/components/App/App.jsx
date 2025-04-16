@@ -6,15 +6,13 @@ import { coordinates, APIkey } from "../../utils/constants";
 import { Header } from "../Header/Header";
 import { Main } from "../Main/Main";
 import { Footer } from "../Footer/Footer";
-import { ModalWithForm } from "../ModalWithForm/ModalWithForm";
 import { ItemModal } from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import AddItmeModal from "../AddItemModal/AddItemModal";
-import { defaultClothingItems } from "../../utils/constants";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
-import { getItems } from "../../utils/api";
+import { addItem, getItems, deleteItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -52,11 +50,23 @@ function App() {
   };
 
   const handleAddItemSubmit = ({ name, imgUrl, weatherType }) => {
-    setClothingItems((prevItems) => [
-      { name, imageUrl: imgUrl, weather: weatherType },
-      ...prevItems,
-    ]);
-    closeActiveModal();
+    addItem({ name, imageUrl: imgUrl, weather: weatherType })
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleCardDelete = (card) => {
+    deleteItem(card._id)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== card._id)
+        );
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -122,6 +132,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          onConfirmDelete={handleCardDelete}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

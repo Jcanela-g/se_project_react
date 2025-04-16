@@ -5,7 +5,7 @@ export default function SideBar() {
   return (
     <div className="sidebar">
       <img src={avatar} alt="Default avatar" className="sidebar__avatar" />
-      <p className="sidebar__username">Username</p>
+      <p className="sidebar__username">Jose Canela</p>
     </div>
   );
 }

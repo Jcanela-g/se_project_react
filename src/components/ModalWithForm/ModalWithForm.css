@@ -155,4 +155,5 @@ input[type="radio"]:checked::before {
 
 .modal__submit:hover {
   background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
 }

@@ -4,7 +4,12 @@ export default function DeleteConfirmationModal({
   activeModal,
   card,
   onClose,
+  onConfirmDelete,
 }) {
+  const handleDelete = () => {
+    onConfirmDelete(card);
+  };
+
   return (
     <div className={`modal ${activeModal === "confirmation" && "modal_open"}`}>
       <div className="modal__content modal__content_confirmation">
@@ -19,6 +24,7 @@ export default function DeleteConfirmationModal({
         </h2>
         <button
           type="button"
+          onClick={handleDelete}
           className="modal__delete-btn modal__delete-btn_confirmation"
         >
           Yes, delete item

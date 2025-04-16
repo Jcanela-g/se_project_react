@@ -7,6 +7,12 @@
   max-width: 498px;
   padding: 0;
   height: 610px;
+  background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  max-width: 496px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
 }
 
 .modal__image {
@@ -38,6 +44,17 @@
 
 .modal__close_type_preview {
   background: url("../../assets/close-white.svg");
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  border: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.modal__close_type_preview:hover {
+  cursor: pointer;
 }
 
 .modal__delete-btn {
