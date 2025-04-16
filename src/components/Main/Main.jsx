@@ -4,7 +4,7 @@ import { WeatherCard } from "../WeatherCard/WeatherCard";
 import { ItemCard } from "../ItemCard/ItemCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-export function Main({ weatherData, handleCardClick, clothingItems }) {
+export default function Main({ weatherData, handleCardClick, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
