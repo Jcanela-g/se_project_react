@@ -9,7 +9,7 @@ import { Footer } from "../Footer/Footer";
 import { ItemModal } from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import AddItmeModal from "../AddItemModal/AddItemModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { addItem, getItems, deleteItem } from "../../utils/api";
@@ -117,7 +117,7 @@ function App() {
 
           <Footer />
         </div>
-        <AddItmeModal
+        <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
           onAddItemModalSubmit={handleAddItemSubmit}
