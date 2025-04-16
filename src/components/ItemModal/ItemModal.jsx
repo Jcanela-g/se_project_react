@@ -1,6 +1,6 @@
 import "./ItemModal.css";
 
-export function ItemModal({
+export default function ItemModal({
   activeModal,
   card,
   onClose,

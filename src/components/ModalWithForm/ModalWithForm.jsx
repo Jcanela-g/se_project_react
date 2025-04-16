@@ -1,6 +1,6 @@
 import "./ModalWithForm.css";
 
-export function ModalWithForm({
+export default function ModalWithForm({
   children,
   buttonText,
   title,
