@@ -12,7 +12,7 @@ export function ItemCard({ item, onCardClick }) {
       <p className="card__title">{item.name}</p>
       <img
         onClick={handleCardClick}
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
         className="card__img"
       />

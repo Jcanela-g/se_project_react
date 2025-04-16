@@ -13,6 +13,8 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 import AddItmeModal from "../AddItemModal/AddItemModal";
 import { defaultClothingItems } from "../../utils/constants";
 import Profile from "../Profile/Profile";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
+import { getItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -23,7 +25,7 @@ function App() {
     isDay: false,
   });
 
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -41,13 +43,17 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const handleDeleteConfirmation = () => {
+    setActiveModal("confirmation");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
 
   const handleAddItemSubmit = ({ name, imgUrl, weatherType }) => {
     setClothingItems((prevItems) => [
-      { name, link: imgUrl, weather: weatherType },
+      { name, imageUrl: imgUrl, weather: weatherType },
       ...prevItems,
     ]);
     closeActiveModal();
@@ -58,6 +64,14 @@ function App() {
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
       })
       .catch(console.error);
   }, []);
@@ -99,6 +113,12 @@ function App() {
           onAddItemModalSubmit={handleAddItemSubmit}
         />
         <ItemModal
+          activeModal={activeModal}
+          card={selectedCard}
+          onClose={closeActiveModal}
+          handleDeleteConfirmation={handleDeleteConfirmation}
+        />
+        <DeleteConfirmationModal
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}

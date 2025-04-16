@@ -41,6 +41,10 @@
   height: 20px;
 }
 
+.modal__close:hover {
+  cursor: pointer;
+}
+
 .modal__title {
   font-family: "Cabinet Grotesk";
   font-weight: 700;

@@ -51,3 +51,7 @@
   object-fit: cover;
   border-radius: 20px;
 }
+
+.card__img:hover {
+  cursor: pointer;
+}
