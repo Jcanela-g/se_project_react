@@ -1,5 +1,5 @@
 import "./ClothesSection.css";
-import { ItemCard } from "../ItemCard/ItemCard";
+import ItemCard from "../ItemCard/ItemCard";
 
 export default function ClothesSection({ clothingItems, handleCardClick }) {
   return (
