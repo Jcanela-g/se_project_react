@@ -28,6 +28,10 @@
   padding: 0;
 }
 
+.clothes-section__add-item-btn:hover {
+  cursor: pointer;
+}
+
 .clothes-section__cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 325px);
