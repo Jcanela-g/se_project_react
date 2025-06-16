@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -10,6 +10,8 @@ import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import RegistrationModal from "../RegisterModal/RegisterModal.jsx";
+import * as auth from "../../utils/auth";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { addItem, getItems, deleteItem } from "../../utils/api";
@@ -22,6 +24,8 @@ function App() {
     condition: "",
     isDay: false,
   });
+
+  const navigate = useNavigate();
 
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
@@ -39,6 +43,10 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
+  };
+
+  const handleRegistrationClick = () => {
+    setActiveModal("registration");
   };
 
   const handleDeleteConfirmation = () => {
@@ -72,6 +80,22 @@ function App() {
         closeActiveModal();
       })
       .catch(console.error);
+  };
+
+  const handleRegistrationSubmit = ({ email, password, name, avatar }) => {
+    if (!email || !password || !name || !avatar) {
+      return Promise.reject(new Error("All fields are required"));
+    }
+    return auth
+      .register(name, email, password)
+      .then((userData) => {
+        navigate("/login");
+        return userData;
+      })
+      .catch((err) => {
+        console.error("Registration failed:", err);
+        return Promise.reject(err);
+      });
   };
 
   const handleCardDelete = (card) => {
@@ -150,6 +174,11 @@ function App() {
           card={selectedCard}
           onClose={closeActiveModal}
           onConfirmDelete={handleCardDelete}
+        />
+        <RegistrationModal
+          isOpen={activeModal === "registration"}
+          onClose={closeActiveModal}
+          onRegistrationModalSubmit={handleRegistrationSubmit}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
