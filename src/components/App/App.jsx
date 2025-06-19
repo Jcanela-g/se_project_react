@@ -11,6 +11,8 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegistrationModal from "../RegisterModal/RegisterModal.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
+import { setToken, getToken } from "../../utils/token.js";
 import * as auth from "../../utils/auth";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
@@ -31,6 +33,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -47,6 +50,10 @@ function App() {
 
   const handleRegistrationClick = () => {
     setActiveModal("registration");
+  };
+
+  const handleLoginClick = () => {
+    setActiveModal("login");
   };
 
   const handleDeleteConfirmation = () => {
@@ -98,6 +105,25 @@ function App() {
       });
   };
 
+  const handleLoginSubmit = ({ email, password }) => {
+    if (!email || !password) {
+      return;
+    }
+
+    auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.jwt) {
+          setToken(data.jwt);
+          setUserData(data.user);
+          setIsLoggedIn(true);
+          const redirectPath = location.state?.from?.pathname || "/profile";
+          navigate(redirectPath);
+        }
+      })
+      .catch(console.error);
+  };
+
   const handleCardDelete = (card) => {
     deleteItem(card._id)
       .then(() => {
@@ -132,7 +158,12 @@ function App() {
     >
       <div className="app">
         <div className="app__content">
-          <Header handleAddClick={handleAddClick} locationData={weatherData} />
+          <Header
+            handleAddClick={handleAddClick}
+            locationData={weatherData}
+            handleRegistrationClick={handleRegistrationClick}
+            handleLoginClick={handleLoginClick}
+          />
           <Routes>
             <Route
               path="/"
@@ -179,6 +210,11 @@ function App() {
           isOpen={activeModal === "registration"}
           onClose={closeActiveModal}
           onRegistrationModalSubmit={handleRegistrationSubmit}
+        />
+        <LoginModal
+          isOpen={activeModal === "login"}
+          onClose={closeActiveModal}
+          onLoginModalSubmit={handleLoginSubmit}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

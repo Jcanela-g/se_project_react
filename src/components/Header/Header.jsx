@@ -4,7 +4,12 @@ import logo from "../../assets/Logo.svg";
 import avatar from "../../assets/Ellipse18.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-export default function Header({ handleAddClick, locationData }) {
+export default function Header({
+  handleAddClick,
+  locationData,
+  handleRegistrationClick,
+  handleLoginClick,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
