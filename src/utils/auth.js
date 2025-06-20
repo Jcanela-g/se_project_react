@@ -1,10 +1,10 @@
-const baseUrl = "http://localhost:3001";
+export const baseUrl = "http://localhost:3001";
 
-function checkResponse(res) {
+export function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error : ${res.status}`);
 }
 
-function signUp(name, avatar, email, password) {
+export function signUp(name, avatar, email, password) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -14,7 +14,7 @@ function signUp(name, avatar, email, password) {
   }).then(checkResponse);
 }
 
-function signIn(email, password) {
+export function signIn(email, password) {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
@@ -23,3 +23,12 @@ function signIn(email, password) {
     body: JSON.stringify({ email, password }),
   }).then(checkResponse);
 }
+
+export const getCurrentUser = (token) =>
+  fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => (res.ok ? res.json() : Promise.reject("Invalid token")));

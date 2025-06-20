@@ -41,8 +41,8 @@ export default function LoginModal({ isOpen, onClose, onLoginModalSubmit }) {
 
   return (
     <ModalWithForm
-      buttonText="Sign Up"
-      title="Sign Up"
+      buttonText="Sign In"
+      title="Sign In"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}

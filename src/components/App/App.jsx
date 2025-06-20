@@ -17,6 +17,7 @@ import * as auth from "../../utils/auth";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { addItem, getItems, deleteItem } from "../../utils/api";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -29,6 +30,7 @@ function App() {
 
   const navigate = useNavigate();
 
+  const [currentUser, setCurrentUser] = useState();
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -81,7 +83,8 @@ function App() {
   }, [activeModal]);
 
   const handleAddItemSubmit = ({ name, imgUrl, weatherType }) => {
-    return addItem({ name, imageUrl: imgUrl, weather: weatherType })
+    const token = getToken();
+    return addItem({ name, imageUrl: imgUrl, weather: weatherType }, token)
       .then((newItem) => {
         setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
@@ -125,7 +128,8 @@ function App() {
   };
 
   const handleCardDelete = (card) => {
-    deleteItem(card._id)
+    const token = getToken();
+    deleteItem(card._id, token)
       .then(() => {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== card._id)
@@ -134,6 +138,28 @@ function App() {
       })
       .catch(console.error);
   };
+
+  useEffect(() => {
+    const token = getToken();
+    if (!token) {
+      setIsLoggedIn(false);
+      return;
+    }
+
+    auth
+      .getCurrentUser(token)
+      .then((userData) => {
+        setCurrentUser(userData);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.error("Token validation failed:", err);
+        removeToken();
+        setIsLoggedIn(false);
+        setCurrentUser(null);
+        navigate("/");
+      });
+  }, [navigate]);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -178,11 +204,13 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  clothingItems={clothingItems}
-                  handleCardClick={handleCardClick}
-                  handleAddClick={handleAddClick}
-                />
+                <ProtectedRoute>
+                  <Profile
+                    clothingItems={clothingItems}
+                    handleCardClick={handleCardClick}
+                    handleAddClick={handleAddClick}
+                  />
+                </ProtectedRoute>
               }
             ></Route>
           </Routes>
