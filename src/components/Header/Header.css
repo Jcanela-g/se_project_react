@@ -58,3 +58,27 @@
   text-decoration: none;
   color: rgba(0, 0, 0, 1);
 }
+
+.header__sign-up-btn {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 1);
+  margin: 0 20px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.header__log-in-btn {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 1);
+  margin: 0 20px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}

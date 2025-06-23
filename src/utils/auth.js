@@ -4,17 +4,17 @@ export function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error : ${res.status}`);
 }
 
-export function signUp(name, avatar, email, password) {
+export function register(name, email, password, avatar) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, avatar, email, password }),
+    body: JSON.stringify({ name, email, password, avatar }),
   }).then(checkResponse);
 }
 
-export function signIn(email, password) {
+export function authorize(email, password) {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
@@ -25,7 +25,7 @@ export function signIn(email, password) {
 }
 
 export const getCurrentUser = (token) =>
-  fetch(`${BASE_URL}/users/me`, {
+  fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

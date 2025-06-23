@@ -35,6 +35,7 @@ export default function RegistrationModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Signup payload:", formData);
     onRegistrationModalSubmit(formData)
       .then(() => {
         setFormData({
