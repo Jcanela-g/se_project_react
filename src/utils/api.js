@@ -9,7 +9,7 @@ function request(url, options) {
 }
 
 function getItems() {
-  return request(`${baseUrl}/items`);
+  return request(`${baseUrl}/items`).then((res) => res.data);
 }
 
 function addItem({ name, imageUrl, weather }, token) {
@@ -36,4 +36,18 @@ function deleteItem(id, token) {
   });
 }
 
-export { getItems, addItem, deleteItem };
+function editProfileInfo({ name, avatar }, token) {
+  return request(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+    }),
+  });
+}
+
+export { getItems, addItem, deleteItem, editProfileInfo };

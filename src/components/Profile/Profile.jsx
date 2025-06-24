@@ -6,11 +6,12 @@ export default function Profile({
   clothingItems,
   handleCardClick,
   handleAddClick,
+  handleEditProfileClick,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar />
+        <SideBar handleEditProfileClick={handleEditProfileClick} />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection

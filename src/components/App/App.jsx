@@ -23,8 +23,14 @@ import { setToken, getToken } from "../../utils/token.js";
 import * as auth from "../../utils/auth";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
-import { addItem, getItems, deleteItem } from "../../utils/api";
+import {
+  addItem,
+  getItems,
+  deleteItem,
+  editProfileInfo,
+} from "../../utils/api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -64,6 +70,10 @@ function App() {
 
   const handleLoginClick = () => {
     setActiveModal("login");
+  };
+
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
   };
 
   const handleDeleteConfirmation = () => {
@@ -124,7 +134,6 @@ function App() {
     return auth
       .authorize(email, password)
       .then((data) => {
-        console.log("🏷️ login response data:", data);
         const token = data.token;
         if (!token) {
           return Promise.reject(new Error("Login failed: no token"));
@@ -134,7 +143,6 @@ function App() {
         return auth.getCurrentUser(token);
       })
       .then((userData) => {
-        console.log("🏷️ current user data:", userData);
         setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
@@ -146,6 +154,23 @@ function App() {
         console.error("Login failed:", err);
         return Promise.reject(err);
       });
+  };
+
+  const handleEditProfileSubmit = ({ name, avatar }) => {
+    const token = getToken();
+
+    if (!token) {
+      return Promise.reject(
+        new Error("You must be logged in to edit your profile")
+      );
+    }
+
+    return editProfileInfo({ name, avatar }, token)
+      .then((res) => {
+        setCurrentUser(res.data);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   const handleCardDelete = (card) => {
@@ -232,6 +257,7 @@ function App() {
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
+                      handleEditProfileClick={handleEditProfileClick}
                     />
                   </ProtectedRoute>
                 }
@@ -266,6 +292,11 @@ function App() {
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLoginModalSubmit={handleLoginSubmit}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeActiveModal}
+            onEditProfileModalSubmit={handleEditProfileSubmit}
           />
         </div>
       </CurrentUserContext.Provider>

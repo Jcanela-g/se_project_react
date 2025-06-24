@@ -12,6 +12,9 @@
 .sidebar__avatar {
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .sidebar__username {
@@ -21,4 +24,22 @@
   font-size: 20px;
   line-height: 100%;
   margin: 0;
+  min-width: 157px;
+}
+
+.sidebar__edit-profile-btn {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 1);
+  margin-top: 20px;
+  padding: 0;
+  border: none;
+  min-width: 171px;
+  background-color: transparent;
+}
+
+.sidebar__edit-profile-btn:hover {
+  cursor: pointer;
 }
