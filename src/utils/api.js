@@ -50,4 +50,29 @@ function editProfileInfo({ name, avatar }, token) {
   });
 }
 
-export { getItems, addItem, deleteItem, editProfileInfo };
+function addCardLike(itemId, token) {
+  return request(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => res.data);
+}
+
+function removeCardLike(itemId, token) {
+  return request(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => res.data);
+}
+
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  editProfileInfo,
+  addCardLike,
+  removeCardLike,
+};

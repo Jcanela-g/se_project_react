@@ -7,6 +7,7 @@ export default function Profile({
   handleCardClick,
   handleAddClick,
   handleEditProfileClick,
+  onCardLike,
 }) {
   return (
     <div className="profile">
@@ -18,6 +19,7 @@ export default function Profile({
           clothingItems={clothingItems}
           handleCardClick={handleCardClick}
           handleAddClick={handleAddClick}
+          onCardLike={onCardLike}
         />
       </section>
     </div>

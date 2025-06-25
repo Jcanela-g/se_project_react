@@ -14,6 +14,13 @@
   justify-content: center;
 }
 
+.card__heading-container {
+  position: absolute;
+  top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
 .card__title {
   background-color: rgba(255, 255, 255, 1);
   font-family: "Cabinet Grotesk";
@@ -21,11 +28,24 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  position: absolute;
-  top: 12px;
+  /* position: absolute;
+  top: 12px; */
   padding: 2px 12px;
   margin: 0;
   border-radius: 4px;
+}
+
+.card__like-btn {
+  width: 26px;
+  height: 24px;
+  background: transparent url("../../assets/like.svg") center no-repeat;
+  object-fit: contain;
+  border: none;
+  padding: 0;
+}
+
+.card__like-btn_liked {
+  background: url("../../assets/liked-state.svg") center no-repeat;
 }
 
 .card__img {

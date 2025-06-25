@@ -28,6 +28,8 @@ import {
   getItems,
   deleteItem,
   editProfileInfo,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
@@ -173,6 +175,20 @@ function App() {
       .catch(console.error);
   };
 
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = getToken();
+    const apiCall = isLiked ? removeCardLike : addCardLike;
+    apiCall(id, token)
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) =>
+            item._id === updatedCard._id ? updatedCard : item
+          )
+        );
+      })
+      .catch(console.error);
+  };
+
   const handleCardDelete = (card) => {
     const token = getToken();
     deleteItem(card._id, token)
@@ -246,6 +262,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               ></Route>
@@ -258,6 +275,7 @@ function App() {
                       handleCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       handleEditProfileClick={handleEditProfileClick}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
