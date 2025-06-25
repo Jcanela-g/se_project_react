@@ -8,11 +8,15 @@ export default function Profile({
   handleAddClick,
   handleEditProfileClick,
   onCardLike,
+  handleLogoutClick,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar handleEditProfileClick={handleEditProfileClick} />
+        <SideBar
+          handleEditProfileClick={handleEditProfileClick}
+          handleLogoutClick={handleLogoutClick}
+        />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection

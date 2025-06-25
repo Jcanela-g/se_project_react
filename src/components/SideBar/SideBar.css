@@ -38,8 +38,27 @@
   border: none;
   min-width: 171px;
   background-color: transparent;
+  text-align: left;
 }
 
 .sidebar__edit-profile-btn:hover {
+  cursor: pointer;
+}
+
+.sidebar__log-out-btn {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 1);
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: 171px;
+  background-color: transparent;
+  text-align: left;
+}
+
+.sidebar__log-out-btn:hover {
   cursor: pointer;
 }

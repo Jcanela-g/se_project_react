@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../assets/CabinetGrotesk-Bold.otf");
+}
+
+.modal__content_confirmation {
+  font-family: "Cabinet Grotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 670px;
+  width: 100%;
+}
+
+.modal__caption_confirmation {
+  margin: 60px 0 40px;
+  max-width: 373px;
+  text-align: center;
+}
+
+.modal__delete-btn_confirmation {
+  position: static;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.modal__cancel-btn {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.modal__cancel-btn:hover {
+  cursor: pointer;
+}

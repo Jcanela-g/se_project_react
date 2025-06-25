@@ -19,6 +19,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegistrationModal from "../RegisterModal/RegisterModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
+import LogoutModal from "../LogoutModal/LogoutModal.jsx";
 import { setToken, getToken } from "../../utils/token.js";
 import * as auth from "../../utils/auth";
 import Profile from "../Profile/Profile";
@@ -72,6 +73,10 @@ function App() {
 
   const handleLoginClick = () => {
     setActiveModal("login");
+  };
+
+  const handleLogoutClick = () => {
+    setActiveModal("logout");
   };
 
   const handleEditProfileClick = () => {
@@ -276,6 +281,7 @@ function App() {
                       handleAddClick={handleAddClick}
                       handleEditProfileClick={handleEditProfileClick}
                       onCardLike={handleCardLike}
+                      handleLogoutClick={handleLogoutClick}
                     />
                   </ProtectedRoute>
                 }
@@ -310,6 +316,11 @@ function App() {
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLoginModalSubmit={handleLoginSubmit}
+          />
+          <LogoutModal
+            isOpen={activeModal === "logout"}
+            onClose={closeActiveModal}
+            setIsLoggedIn={setIsLoggedIn}
           />
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}
