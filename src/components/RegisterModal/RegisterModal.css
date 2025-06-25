@@ -1,0 +1,14 @@
+.modal__login-button {
+  position: absolute;
+  background: none;
+  bottom: 44px;
+  left: 162px;
+  border: none;
+  opacity: 50%;
+  padding: 0;
+}
+
+.modal__login-button:hover {
+  cursor: pointer;
+  opacity: 100%;
+}

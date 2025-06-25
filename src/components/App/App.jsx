@@ -124,8 +124,14 @@ function App() {
     return auth
       .register(name, email, password, avatar)
       .then((userData) => {
-        navigate("/login");
+        closeActiveModal();
         return userData;
+      })
+      .then(() => {
+        handleLoginSubmit({ email, password });
+      })
+      .then(() => {
+        navigate("/profile");
       })
       .catch((err) => {
         console.error("Registration failed:", err);
@@ -311,11 +317,13 @@ function App() {
             isOpen={activeModal === "registration"}
             onClose={closeActiveModal}
             onRegistrationModalSubmit={handleRegistrationSubmit}
+            handleLoginClick={handleLoginClick}
           />
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLoginModalSubmit={handleLoginSubmit}
+            handleRegistrationClick={handleRegistrationClick}
           />
           <LogoutModal
             isOpen={activeModal === "logout"}

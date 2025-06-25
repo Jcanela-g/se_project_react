@@ -1,3 +1,4 @@
+import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -6,6 +7,7 @@ export default function RegistrationModal({
   isOpen,
   onClose,
   onRegistrationModalSubmit,
+  handleLoginClick,
 }) {
   const [formData, setFormData] = useState({
     email: "",
@@ -35,7 +37,6 @@ export default function RegistrationModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Signup payload:", formData);
     onRegistrationModalSubmit(formData)
       .then(() => {
         setFormData({
@@ -113,6 +114,13 @@ export default function RegistrationModal({
           required
         />
       </label>
+      <button
+        onClick={handleLoginClick}
+        type="button"
+        className="modal__login-button"
+      >
+        or Log in
+      </button>
     </ModalWithForm>
   );
 }
