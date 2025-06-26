@@ -111,7 +111,7 @@ function App() {
     const token = getToken();
     return addItem({ name, imageUrl: imgUrl, weather: weatherType }, token)
       .then((newItem) => {
-        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        setClothingItems((prevItems) => [newItem.data, ...prevItems]);
         closeActiveModal();
       })
       .catch(console.error);
