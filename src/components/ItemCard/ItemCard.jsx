@@ -21,10 +21,14 @@ export default function ItemCard({ item, onCardClick, onCardLike }) {
     <li className="card">
       <div className="card__heading-container">
         <p className="card__title">{item.name}</p>
-        <button
-          onClick={handleLike}
-          className={`card__like-btn ${isLiked ? "card__like-btn_liked" : ""}`}
-        ></button>
+        {currentUser?._id && (
+          <button
+            onClick={handleLike}
+            className={`card__like-btn ${
+              isLiked ? "card__like-btn_liked" : ""
+            }`}
+          />
+        )}
       </div>
       <img
         onClick={handleCardClick}
