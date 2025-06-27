@@ -4,10 +4,12 @@ import "./ItemCard.css";
 
 export default function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
+  const userId = currentUser?._id;
 
-  const isLiked = Array.isArray(item.likes)
-    ? item.likes.some((userId) => userId === currentUser._id)
-    : false;
+  const isLiked =
+    userId && Array.isArray(item.likes)
+      ? item.likes.some((u) => u === userId)
+      : false;
 
   const handleCardClick = () => {
     onCardClick(item);
@@ -21,7 +23,7 @@ export default function ItemCard({ item, onCardClick, onCardLike }) {
     <li className="card">
       <div className="card__heading-container">
         <p className="card__title">{item.name}</p>
-        {currentUser?._id && (
+        {userId && (
           <button
             onClick={handleLike}
             className={`card__like-btn ${

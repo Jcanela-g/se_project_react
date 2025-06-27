@@ -20,7 +20,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import RegistrationModal from "../RegisterModal/RegisterModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import LogoutModal from "../LogoutModal/LogoutModal.jsx";
-import { setToken, getToken } from "../../utils/token.js";
+import { setToken, getToken, removeToken } from "../../utils/token.js";
 import * as auth from "../../utils/auth";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
@@ -329,6 +329,7 @@ function App() {
             isOpen={activeModal === "logout"}
             onClose={closeActiveModal}
             setIsLoggedIn={setIsLoggedIn}
+            setCurrentUser={setCurrentUser}
           />
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}

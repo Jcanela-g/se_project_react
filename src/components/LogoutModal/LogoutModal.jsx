@@ -1,11 +1,17 @@
 import "./LogoutModal.css";
 import { removeToken } from "../../utils/token";
 
-export default function LogoutModal({ isOpen, onClose, setIsLoggedIn }) {
+export default function LogoutModal({
+  isOpen,
+  onClose,
+  setIsLoggedIn,
+  setCurrentUser,
+}) {
   const handleLogout = (e) => {
     e.preventDefault();
     removeToken();
     setIsLoggedIn(false);
+    setCurrentUser(null);
     onClose();
   };
 
