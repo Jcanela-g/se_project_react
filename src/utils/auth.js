@@ -1,8 +1,6 @@
-export const baseUrl = "http://localhost:3001";
+import { checkResponse } from "./api";
 
-export function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error : ${res.status}`);
-}
+export const baseUrl = "http://localhost:3001";
 
 export function register(name, email, password, avatar) {
   return fetch(`${baseUrl}/signup`, {

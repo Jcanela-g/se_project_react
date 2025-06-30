@@ -53,13 +53,16 @@ export default function LoginModal({
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="email" className="modal__label modal__label_type_normal">
+      <label
+        htmlFor="loginEmail"
+        className="modal__label modal__label_type_normal"
+      >
         Email*{""}
         <input
           type="email"
           name="email"
           className="modal__input"
-          id="email"
+          id="loginEmail"
           placeholder="Email"
           onChange={handleChange}
           value={formData.email}
@@ -67,7 +70,7 @@ export default function LoginModal({
         />
       </label>
       <label
-        htmlFor="password"
+        htmlFor="loginPassword"
         className="modal__label modal__label_type_normal"
       >
         Password*{""}
@@ -75,7 +78,7 @@ export default function LoginModal({
           type="password"
           name="password"
           className="modal__input"
-          id="password"
+          id="loginPassword"
           placeholder="Password"
           onChange={handleChange}
           value={formData.password}

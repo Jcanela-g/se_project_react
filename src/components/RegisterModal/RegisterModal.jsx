@@ -59,13 +59,16 @@ export default function RegistrationModal({
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="email" className="modal__label modal__label_type_normal">
+      <label
+        htmlFor="registerEmail"
+        className="modal__label modal__label_type_normal"
+      >
         Email*{""}
         <input
           type="email"
           name="email"
           className="modal__input"
-          id="email"
+          id="registerEmail"
           placeholder="Email"
           onChange={handleChange}
           value={formData.email}
@@ -73,7 +76,7 @@ export default function RegistrationModal({
         />
       </label>
       <label
-        htmlFor="password"
+        htmlFor="registerPassword"
         className="modal__label modal__label_type_normal"
       >
         Password*{""}
@@ -81,20 +84,23 @@ export default function RegistrationModal({
           type="password"
           name="password"
           className="modal__input"
-          id="password"
+          id="registerPassword"
           placeholder="Password"
           onChange={handleChange}
           value={formData.password}
           required
         />
       </label>
-      <label htmlFor="name" className="modal__label modal__label_type_normal">
+      <label
+        htmlFor="registerName"
+        className="modal__label modal__label_type_normal"
+      >
         Name*{""}
         <input
           type="text"
           name="name"
           className="modal__input"
-          id="name"
+          id="registerName"
           placeholder="Name"
           onChange={handleChange}
           value={formData.name}

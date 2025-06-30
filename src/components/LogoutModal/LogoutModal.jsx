@@ -24,7 +24,7 @@ export default function LogoutModal({
           className="modal__close modal__close_type_confirmation"
         ></button>
         <h2 className="modal__caption modal__caption_confirmation">
-          Are you sure you want to logout item?
+          Are you sure you want to logout?
         </h2>
         <button
           type="button"

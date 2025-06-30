@@ -75,4 +75,5 @@ export {
   editProfileInfo,
   addCardLike,
   removeCardLike,
+  checkResponse,
 };

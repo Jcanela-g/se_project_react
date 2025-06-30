@@ -180,7 +180,7 @@ function App() {
 
     return editProfileInfo({ name, avatar }, token)
       .then((res) => {
-        setCurrentUser(res.data);
+        setCurrentUser(res);
         closeActiveModal();
       })
       .catch(console.error);
