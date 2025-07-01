@@ -189,7 +189,7 @@ function App() {
   const handleCardLike = ({ id, isLiked }) => {
     const token = getToken();
     const apiCall = isLiked ? removeCardLike : addCardLike;
-    apiCall(id, token)
+    return apiCall(id, token)
       .then((updatedCard) => {
         setClothingItems((cards) =>
           cards.map((item) =>
@@ -202,7 +202,7 @@ function App() {
 
   const handleCardDelete = (card) => {
     const token = getToken();
-    deleteItem(card._id, token)
+    return deleteItem(card._id, token)
       .then(() => {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== card._id)
@@ -216,6 +216,7 @@ function App() {
     const token = getToken();
     if (!token) {
       setIsLoggedIn(false);
+      setCurrentUser(null);
       return;
     }
 
