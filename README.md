@@ -9,3 +9,4 @@ The idea of the application is pretty simple - we make a call to an API, which t
 ## Links
 
 - [Backend repo](https://github.com/Jcanela-g/se_project_express.git)
+- [Deployed on Google Cloud VM](https://wtwrnow.jumpingcrab.com/)
