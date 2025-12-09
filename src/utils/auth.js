@@ -2,7 +2,7 @@ import { checkResponse } from "./api";
 
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwrnow.jumpingcrab.com"
+    ? "https://wtwr-api-gked.onrender.com"
     : "http://localhost:3001";
 
 export function register(name, email, password, avatar) {
